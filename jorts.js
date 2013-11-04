@@ -27,5 +27,11 @@
 
 	// jorts.stretch: jorts.many with additional values to be used as the
 	// domain, but not actually shortened.
+	
+	var log10 = function(v)
+	{
+		// Will deal with rounding issues later, this is close enough.
+		return Math.log(v) / Math.LN10;
+	};
 
 }.call(this));
