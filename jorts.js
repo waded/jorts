@@ -48,9 +48,9 @@
 	
 	var scaleFn = function(exp) {
 		var s = {div:1, suffix:''};
-		if (exp >= 9) s = {div:1000000000, suffix:'B'}
-		else if (exp >= 6) s = {div:1000000, suffix:'M'}
-		else if (exp >= 3) s = {div:1000, suffix:'K'}
+		if (exp >= 9) s = {div:1e9, suffix:'B'}
+		else if (exp >= 6) s = {div:1e6, suffix:'M'}
+		else if (exp >= 3) s = {div:1e3, suffix:'K'}
 
 		return function(number) {
 			return Math.round(number / s.div) + s.suffix;
