@@ -36,6 +36,10 @@
 		return result;
 	};
 
+	// exports.stretch = function(numbers, additionalDomain) {
+	// 	// like many, but with additionalDomain values that are used in the domain but
+	// 	// needn't be returned in the shortened list
+	// };
 
 	var max = function(list) {
 		return Math.max.apply(this, list);
