@@ -1,21 +1,27 @@
-// jorts 0.0.2 (the version that does one thing)
-
-(function() {
-
-	var god = this;
-
-	god.jorts = function() {};
+// jorts.js
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD anonymous module
+		define(['exports'], factory);
+	} else if (typeof exports === 'object') {
+		// CommonJS
+		factory(exports);
+	} else {
+		// Browser global
+		factory((root.jorts = {}));
+	}
+}(this, function (exports) {
 
 	// Shorten one number in isolation. We recommend you find this number
-	// a friend, and use jorts.many instead.
-	var one = jorts.one = function(number) {
-		var numbers = many([number]);
+	// a friend, and use many instead.
+	exports.one = function(number) {
+		var numbers = exports.many([number]);
 		return isArray(numbers) ? numbers[0] : undefined;
 	};
 
 	// Returns an ordered list of shortened numbers, given an ordered list
 	// of numbers to be shortened.
-	var many = jorts.many = function(numbers) {
+	exports.many = function(numbers) {
 		if (!isArray(numbers)) return undefined;
 	
 		var scale = scaleFn(floorLog10(max(numbers)));
@@ -30,12 +36,10 @@
 		return result;
 	};
 
-	// jorts.stretch: jorts.many with additional values to be used as the
-	// domain, but not actually shortened.
-	
+
 	var max = function(list) {
 		return Math.max.apply(this, list);
-	}
+	};
 	
 	var floorLog10 = function(v) {
 		// Add .0001 to dodge Math.log(1000) / Math.LN10 != 2 precision issue
@@ -57,4 +61,5 @@
 		return maybeArray instanceof Array;
 	};
 
-}.call(this));
+}));
+
