@@ -1,0 +1,22 @@
+{
+  "name": "jorts",
+  "description": "Number short-scaling for JavaScript",
+  "homepage": "https://github.com/waded/jorts",
+  "author": "Wade Dorrell <wade@dorrells.org>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/waded/jorts.git"
+  },
+  "main": "jorts.js",
+  "version": "0.0.1",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/waded/jorts/master/LICENSE"
+    }
+  ],
+  "files": [
+    "jorts.js",
+    "LICENSE"
+  ]
+}
