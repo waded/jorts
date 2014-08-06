@@ -1,9 +1,17 @@
 var one = function(a, e) { strictEqual(jorts.one(a), e) };
 var many = function(a, e) { deepEqual(jorts.many(a), e) };
 
-test('Basic API', function() {
-	one(1184, "1K");
-	many([0, 1000, 2000], ['0', '1K', '2K']);
+test('Basics', function() {
+	one(1184, '1K'); // common use for one number
+	one(0, '0'); // 0 is always 0
+	many([0, 1000, 2000], ['0', '1K', '2K']); // 0 is always 0, but the others are Ks
+	one(17, '17'); // 17 alone isn't worth shortening
+	many([17, 1000, 2000], ['0K', '1K', '2K']); // but mix 17 with K's, and for comparison it's 0K
+	one(117, '117'); // 117 alone needn't be shortened
+	many([117, 1000, 2000], ['0K', '1K', '2K']); // but mix 117 in with K's, and we shorten it again
+	many([117, 1000, 2000, 2200], ['0K', '1K', '2K', '2K']);
+	// note the tests above show we're not using decimals at all. We may reconsider adding decimals,
+	// which in particular would change the final call expected to ['.1K', '1K', '2K', '2.2K']
 });
 
 test('Small numbers', function() {
