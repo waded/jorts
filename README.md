@@ -1,10 +1,11 @@
 Jorts abbreviates numbers for numeric comparison using US English short-scale.
 
-E.g. 
+For example you can compare many numbers at once:
 
-   jorts.many([1231, 8345, 0]) yields ["1K", "8K", "0"]
+    > jorts.many([1231, 8345, 0, -9353])
+    < ["1K", "8K", "0", "-9K"]
 
-Such abbreviation puts focus on magnitude rather than precision. It saves mental, vocal, and screen ink for more important things.
+This abbreviation puts focus on differences magnitude of the numbers, rather than precision. It saves mental, vocal, and screen ink for more important things.
 
 See http://en.wikipedia.org/wiki/Long_and_short_scales for more about short scales in different cultures.
 
