@@ -8,7 +8,7 @@
     "url": "git://github.com/waded/jorts.git"
   },
   "main": "jorts.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "licenses": [
     {
       "type": "MIT",
