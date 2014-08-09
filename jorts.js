@@ -24,7 +24,7 @@
 	exports.many = function(numbers) {
 		if (!isArray(numbers)) return undefined;
 	
-		var scale = scaleFn(floorLog10(max(numbers)));
+		var scale = scaleFn(floorLog10(absMax(numbers)));
 		
 		var result = [];
 		for (var i = 0; i<numbers.length; i++)
@@ -41,17 +41,18 @@
 	// 	// needn't be returned in the shortened list
 	// };
 
-	var max = function(list) {
-		return Math.max.apply(this, list);
+	var absMax = function(list) {
+		return list
+			.map(function(v) { return Math.abs(v) })
+			.reduce(function(p, v) { return Math.max(p, v) }, 0);
 	};
 	
 	var floorLog10 = function(v) {
-		var absIntV = Math.round(Math.abs(v));
-		if (absIntV < 1e16)
+		if (v < 1e16)
 		{
 			// This avoids all precision issues w/in the common & tested gamut of jorts
 			// (not useful after + '' starts yielding E notation though)
-			return (absIntV + '').length - 1;
+			return (Math.round(v) + '').length - 1;
 		}
 		else
 		{
@@ -63,6 +64,8 @@
 	
 	var scaleFn = function(exp) {
 		var s = {div:1, suffix:''};
+
+		exp = Math.abs(exp);
 		if (exp >= 12) s = {div:1e12, suffix:'T'}
 		else if (exp >= 9) s = {div:1e9, suffix:'B'}
 		else if (exp >= 6) s = {div:1e6, suffix:'M'}

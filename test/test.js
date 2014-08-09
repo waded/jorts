@@ -20,21 +20,42 @@ test('General: Small numbers left alone', function() {
 	many([3, 9], ['3', '9']);
 });
 
-test('General: Gamut', function() {
+test('General: Gamut positive', function() {
 	many([0], ['0']);
-	many([1], ['1']);
-	many([1000], ['1K']);
-	many([10000], ['10K']);
-	many([100000], ['100K']);
-	many([1000000], ['1M']);
-	many([10000000], ['10M']);
-	many([100000000], ['100M']);
-	many([1000000000], ['1B']);
-	many([10000000000], ['10B']);
-	many([100000000000], ['100B']);
-	many([1000000000000], ['1T']);
-	many([10000000000000], ['10T']);
-	many([100000000000000], ['100T']);			
+	many([1e0], ['1']);
+	many([1e1], ['10'])
+	many([1e2], ['100'])
+	many([1e3], ['1K']);
+	many([1e4], ['10K']);
+	many([1e5], ['100K']);
+	many([1e6], ['1M']);
+	many([1e7], ['10M']);
+	many([1e8], ['100M']);
+	many([1e9], ['1B']);
+	many([1e10], ['10B']);
+	many([1e11], ['100B']);
+	many([1e12], ['1T']);
+	many([1e13], ['10T']);
+	many([1e14], ['100T']);
+});
+
+test('General: Gamut negative', function() {
+	many([0], ['0']);
+	many([-1e0], ['-1']);
+	many([-1e1], ['-10']);
+	many([-1e2], ['-100']);
+	many([-1e3], ['-1K']);
+	many([-1e4], ['-10K']);
+	many([-1e5], ['-100K']);
+	many([-1e6], ['-1M']);
+	many([-1e7], ['-10M']);
+	many([-1e8], ['-100M']);
+	many([-1e9], ['-1B']);
+	many([-1e10], ['-10B']);
+	many([-1e11], ['-100B']);
+	many([-1e12], ['-1T']);
+	many([-1e13], ['-10T']);
+	many([-1e14], ['-100T']);
 });
 
 test('General: Trillion is the largest supported scale', function() {
@@ -60,7 +81,15 @@ test("Many: Unexpected values", function() {
 	many({A:1}, undefined);	
 });
 
-test('Negatives: Not well defined yet so allowing this to fail', function() {
+test('General: Negatives in mixed company', function() {
 	many([1000, -1000], ['1K', '-1K']);
 	many([1, -1000], ['0K', '-1K']);
+	many([-1, 1000], ['0K', '1K']);
+
+	many([-1000, 10000], ['-1K', '10K'])
+	many([1000, -10000], ['1K', '-10K'])
+
+	many([0, 1000, -1000], ['0', '1K', '-1K']);
+	many([0, 1000000, -1000], ['0', '1M', '0M']);
+
 });
