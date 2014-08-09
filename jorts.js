@@ -46,13 +46,25 @@
 	};
 	
 	var floorLog10 = function(v) {
-		// Add .0001 to dodge Math.log(1000) / Math.LN10 != 2 precision issue
-		return Math.floor(Math.log(v + 0.0001) / Math.LN10);
+		var absIntV = Math.round(Math.abs(v));
+		if (absIntV < 1e16)
+		{
+			// This avoids all precision issues w/in the common & tested gamut of jorts
+			// (not useful after + '' starts yielding E notation though)
+			return (absIntV + '').length - 1;
+		}
+		else
+		{
+			// This is mathematically correct, but subject to precision issues 
+			// e.g. for v = 1e12
+			return Math.floor(Math.log(v) / Math.LN10);
+		}
 	};
 	
 	var scaleFn = function(exp) {
 		var s = {div:1, suffix:''};
-		if (exp >= 9) s = {div:1e9, suffix:'B'}
+		if (exp >= 12) s = {div:1e12, suffix:'T'}
+		else if (exp >= 9) s = {div:1e9, suffix:'B'}
 		else if (exp >= 6) s = {div:1e6, suffix:'M'}
 		else if (exp >= 3) s = {div:1e3, suffix:'K'}
 
