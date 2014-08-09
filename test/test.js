@@ -41,6 +41,10 @@ test('General: Trillion is the largest supported scale', function() {
 	many([1000000000000000], ['1000T']);
 });
 
+test('General: National debt as mentioned in readme works', function() {
+	many([17635936048534], ['18T']);
+});
+
 test('Many: Empty yields empty', function() {
 	many([], []);
 });
