@@ -1,9 +1,8 @@
 module.exports = function (config) {
   config.set({
     frameworks: ['qunit'],
-    plugins: ['karma-qunit'],
-    files: [
-      '*.js'
-    ]
+    browsers: ['PhantomJS'],
+    plugins: ['karma-qunit', 'karma-phantomjs-launcher'],
+    files: ['*.js']
   })
 }
