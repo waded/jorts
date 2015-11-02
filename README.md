@@ -1,7 +1,7 @@
-What's jorts?
+What's jorts.js?
 ----
 
-Jorts abbreviates numbers for numeric comparison using US English short-scale.
+jorts.js abbreviates numbers for numeric comparison using US English short-scale.
 
 For example:
 
