@@ -8,11 +8,11 @@ For example:
     > jorts.many([1231, 8345, 0, -9353])
     < ["1K", "8K", "0", "-9K"]
 
-This abbreviation style puts focus on differences magnitude of the numbers, rather than possibly arbitrary precision.
+This abbreviation style puts focus on differences magnitude of the numbers, rather than possibly arbitrary precision. 
 
 See http://en.wikipedia.org/wiki/Long_and_short_scales for more about short scales in different cultures.
 
-When to scale, when not to scale, and if scaling, to what precision, is handled automatically by jorts. See the tests for specific details.
+When to scale, and to what precision, is handled automatically by jorts' opinion. See the tests for details.
 
 Build status
 ---
