@@ -8,14 +8,13 @@
     "url": "git://github.com/waded/jorts.git"
   },
   "devDependencies": {
-    "karma": "~0.12.0",
-    "karma-phantomjs-launcher": "^0.2.1",
-    "karma-qunit": "^0.1.5",
-    "phantomjs": "^1.9.18",
-    "qunitjs": "^1.18.0"
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-qunit": "^4.0.0",
+    "qunit": "^2.9.3"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
+    "test": "./node_modules/karma/bin/karma start --single-run"
   },
   "main": "jorts.js",
   "version": "0.0.6",
