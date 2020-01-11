@@ -18,13 +18,8 @@
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },
   "main": "jorts.js",
-  "version": "0.0.5",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/waded/jorts/master/LICENSE"
-    }
-  ],
+  "version": "0.0.6",
+  "license": "MIT",
   "files": [
     "jorts.js",
     "LICENSE"
