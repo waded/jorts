@@ -51,4 +51,3 @@ without jorts.
 - The largest scale used is 10^12. For US English this seemed sufficient. If
   you're scaling larger numbers scientific notation may be more appropriate than
   short scaling.
-
