@@ -8,6 +8,12 @@ var test = function(name, fn) {
 	it(name, fn);
 }
 
+test('General: Readme scenarios', function() {
+	many([1231, 8345, 0, -9353], ["1K", "8K", "0", "-9K"]);
+	many([1231, 8345, 117, -9353], ["1K", "8K", "0K", "-9K"]);
+	many([117], ["117"]);
+});
+
 test('General: Basic scenarios needed to understand jorts', function() {
 	one(1184, '1K'); // common use for one number
 	one(0, '0'); // 0 is always 0

@@ -14,8 +14,12 @@ rather than possibly arbitrary precision.
 See <http://en.wikipedia.org/wiki/Long_and_short_scales> for more about short
 scales in different cultures.
 
-When to scale, and to what precision, is handled automatically by jorts'
-opinion. See the tests for details.
+When to scale, and to what precision, is handled automatically by jorts. Use
+'jorts.many' on the entire set of values to be compared for best results, rather
+than making individual calls to 'jorts.one'.
+The algorithm attempts to hide irrelevant precision across the set of values, for
+example the number 117 will round to "0K" in the presence of other values in the
+thousands, but 0 is still "0", and a 117 on its own is still "117."
 
 ## Build status
 
