@@ -14,7 +14,7 @@
     "test": "mocha"
   },
   "main": "jorts.js",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "MIT",
   "files": [
     "jorts.js",

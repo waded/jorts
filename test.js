@@ -12,6 +12,11 @@ test('General: Readme scenarios', function() {
 	many([1231, 8345, 0, -9353], ["1K", "8K", "0", "-9K"]);
 	many([1231, 8345, 117, -9353], ["1K", "8K", "0K", "-9K"]);
 	many([117], ["117"]);
+
+	many([0], ["0"]);
+	many([0.01], ["0"]);
+	many([1000000], ["1M"]);
+	many([1000000000], ["1B"]);
 });
 
 test('General: Basic scenarios needed to understand jorts', function() {
