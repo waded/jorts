@@ -8,12 +8,10 @@
     "url": "git://github.com/waded/jorts.git"
   },
   "devDependencies": {
-    "karma": "^4.4.1",
-    "karma-qunit": "^4.0.0",
-    "qunit": "^2.9.3"
+    "mocha": "^7.0.0"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run"
+    "test": "mocha"
   },
   "main": "jorts.js",
   "version": "0.0.6",
