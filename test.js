@@ -1,5 +1,12 @@
-var one = function(a, e) { strictEqual(jorts.one(a), e) };
-var many = function(a, e) { deepEqual(jorts.many(a), e) };
+var assert = require('assert');
+var jorts = require('./jorts.js');
+
+// Shims to switch from qunit to mocha while tests still test
+var one = function(a, e) { assert.equal(String(jorts.one(a)), String(e)) };
+var many = function(a, e) { assert.equal(String(jorts.many(a)), String(e)) };
+var test = function(name, fn) {
+	it(name, fn);
+}
 
 test('General: Basic scenarios needed to understand jorts', function() {
 	one(1184, '1K'); // common use for one number
