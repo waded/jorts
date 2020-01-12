@@ -2,24 +2,29 @@ var assert = require('assert');
 var jorts = require('./jorts.js');
 
 // Shims to switch from qunit to mocha while tests still test
-var one = function(a, e) { assert.equal(String(jorts.one(a)), String(e)) };
-var many = function(a, e) { assert.equal(String(jorts.many(a)), String(e)) };
-var test = function(name, fn) {
+var one = function (a, e) { assert.equal(String(jorts.one(a)), String(e)) };
+var many = function (a, e) { assert.equal(String(jorts.many(a)), String(e)) };
+var test = function (name, fn) {
 	it(name, fn);
 }
 
-test('General: Readme scenarios', function() {
-	many([1231, 8345, 0, -9353], ["1K", "8K", "0", "-9K"]);
-	many([1231, 8345, 117, -9353], ["1K", "8K", "0K", "-9K"]);
-	many([117], ["117"]);
+test('General: Readme scenarios', function () {
+	// Readme uses these to explain how the library works, how it works on 
+	// multiple vs. single values.
+	many([1231, 8345, 0, 19353], ['1K', '8K', '0', '19K']);
+	many([1231, 8345, 117, 19353], ['1K', '8K', '0K', '19K']);
+	many([117], ['117']);
+	many([0], ['0']);
 
-	many([0], ["0"]);
-	many([0.01], ["0"]);
-	many([1000000], ["1M"]);
-	many([1000000000], ["1B"]);
+	// Readme notes mention the M vs MM vs B behavior
+	many([1000000], ['1M']);
+	many([1000000000], ['1B']);
+
+	// Readme uses this cases to explain why this library's not really for charting.
+	many([545, 627, 1993, 4871], ['1K', '1K', '2K', '5K']);
 });
 
-test('General: Basic scenarios needed to understand jorts', function() {
+test('General: Basic scenarios needed to understand jorts', function () {
 	one(1184, '1K'); // common use for one number
 	one(0, '0'); // 0 is always 0
 	many([0, 1000, 2000], ['0', '1K', '2K']); // 0 is always 0, but the others are Ks
@@ -32,13 +37,13 @@ test('General: Basic scenarios needed to understand jorts', function() {
 	// which in particular would change the final call expected to ['.1K', '1K', '2K', '2.2K']
 });
 
-test('General: Small numbers left alone', function() {
+test('General: Small numbers left alone', function () {
 	many([0, 1, 2], ['0', '1', '2']);
 	many([5, 1, 0], ['5', '1', '0']);
 	many([3, 9], ['3', '9']);
 });
 
-test('General: Gamut positive', function() {
+test('General: Gamut positive', function () {
 	many([0], ['0']);
 	many([1e0], ['1']);
 	many([1e1], ['10'])
@@ -57,7 +62,7 @@ test('General: Gamut positive', function() {
 	many([1e14], ['100T']);
 });
 
-test('General: Gamut negative', function() {
+test('General: Gamut negative', function () {
 	many([0], ['0']);
 	many([-1e0], ['-1']);
 	many([-1e1], ['-10']);
@@ -76,30 +81,30 @@ test('General: Gamut negative', function() {
 	many([-1e14], ['-100T']);
 });
 
-test('General: Trillion is the largest supported scale', function() {
+test('General: Trillion is the largest supported scale', function () {
 	many([1000000000000000], ['1000T']);
 });
 
-test('General: National debt as mentioned in readme works', function() {
+test('General: National debt as mentioned in readme works', function () {
 	many([17635936048534], ['18T']);
 });
 
-test('Many: Empty yields empty', function() {
+test('Many: Empty yields empty', function () {
 	many([], []);
 });
 
-test('One: Unexpected values', function() {	
+test('One: Unexpected values', function () {
 	one(undefined, undefined);
 	one("Fragrant Banana", undefined);
 });
 
-test("Many: Unexpected values", function() {
+test("Many: Unexpected values", function () {
 	many(undefined, undefined);
 	many("Palomino", undefined);
-	many({A:1}, undefined);	
+	many({ A: 1 }, undefined);
 });
 
-test('General: Negatives in mixed company', function() {
+test('General: Negatives in mixed company', function () {
 	many([1000, -1000], ['1K', '-1K']);
 	many([1, -1000], ['0K', '-1K']);
 	many([-1, 1000], ['0K', '1K']);
