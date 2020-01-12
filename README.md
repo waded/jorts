@@ -1,7 +1,6 @@
 # What's jorts.js
 
-jorts.js abbreviates numbers for numeric comparison using US English
-short-scale.
+jorts.js abbreviates numbers for comparison using US English short-scale.
 
 For example:
 
@@ -15,11 +14,11 @@ See <http://en.wikipedia.org/wiki/Long_and_short_scales> for more about short
 scales in different cultures.
 
 When to scale, and to what precision, is handled automatically by jorts. Use
-'jorts.many' on the entire set of values to be compared for best results, rather
-than making individual calls to 'jorts.one'.
-The algorithm attempts to hide irrelevant precision across the set of values, for
-example the number 117 will round to "0K" in the presence of other values in the
-thousands, but 0 is still "0", and a 117 on its own is still "117."
+'jorts.many' on the entire set of values you'll display for best results, rather
+than making repeated calls to 'jorts.one'. The algorithm intentionally hides
+irrelevant precision across the set: 117 rounds to "0K" in the presence of
+values in the thousands (it's not 0, but how not-zero it is doesn't matter),
+but 0 is still "0" (nothing), and 117 on its own is still "117."
 
 ## Build status
 
