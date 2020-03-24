@@ -8,13 +8,13 @@
     "url": "git://github.com/waded/jorts.git"
   },
   "devDependencies": {
-    "mocha": "^7.0.0"
+    "mocha": "^7.1.1"
   },
   "scripts": {
     "test": "mocha"
   },
   "main": "jorts.js",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "license": "MIT",
   "files": [
     "jorts.js",
