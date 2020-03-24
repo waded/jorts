@@ -19,5 +19,13 @@
   "files": [
     "jorts.js",
     "LICENSE"
+  ],
+  "keywords": [
+    "scale",
+    "scaling",
+    "short-scale",
+    "short-scaling",
+    "rounding",
+    "visualization"
   ]
 }
